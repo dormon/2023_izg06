@@ -11,9 +11,14 @@ project(IZG06)
 add_subdirectory(libs/SDL-release-2.30.1)
 add_subdirectory(libs/geGL)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_library(glm INTERFACE)
+target_include_directories(glm INTERFACE libs/glm-0.9.9.8)
+
+add_executable(${PROJECT_NAME} src/main.cpp src/bunny.cpp src/bunny.hpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2::SDL2 SDL2::SDL2main)
-target_link_libraries(${PROJECT_NAME} geGL::geGL dl)
+target_link_libraries(${PROJECT_NAME} geGL::geGL dl glm)
+
+target_include_directories(${PROJECT_NAME} PUBLIC src/)
 
 add_custom_target(run ./${PROJECT_NAME})
