@@ -9,9 +9,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1 )
 project(IZG06)
 
 add_subdirectory(libs/SDL-release-2.30.1)
+add_subdirectory(libs/geGL)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2::SDL2 SDL2::SDL2main)
+target_link_libraries(${PROJECT_NAME} geGL::geGL dl)
 
 add_custom_target(run ./${PROJECT_NAME})
