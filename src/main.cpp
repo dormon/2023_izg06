@@ -92,7 +92,7 @@ int main(int argc,char*argv[]){
   glm::mat4 view = glm::lookAt(glm::vec3(2),glm::vec3(0),glm::vec3(0,1,0));
   float alpha=0;
 
-  glEnable(GL_DEPTH_TEST);
+  //glEnable(GL_DEPTH_TEST);
 
   bool running = true;
   while(running){ // main loop
