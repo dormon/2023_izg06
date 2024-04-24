@@ -35,6 +35,7 @@ int main(int argc,char*argv[]){
 
   void main(){
     vNormal = normal;
+
     gl_Position = proj*view*model*vec4(position,1);
   }
   ).";
@@ -92,7 +93,9 @@ int main(int argc,char*argv[]){
   glm::mat4 view = glm::lookAt(glm::vec3(2),glm::vec3(0),glm::vec3(0,1,0));
   float alpha=0;
 
-  //glEnable(GL_DEPTH_TEST);
+  glEnable(GL_DEPTH_TEST);
+
+  glDepthFunc(GL_LESS);
 
   bool running = true;
   while(running){ // main loop
@@ -115,6 +118,8 @@ int main(int argc,char*argv[]){
     glProgramUniformMatrix4fv(prg,glGetUniformLocation(prg,"proj"),1,GL_FALSE,(float*)&proj);
     glProgramUniformMatrix4fv(prg,glGetUniformLocation(prg,"model"),1,GL_FALSE,(float*)&model);
     glDrawElements(GL_TRIANGLES,sizeof(bunnyIndices)/sizeof(uint32_t),GL_UNSIGNED_INT,0);
+    //
+    //glDrawArrays(GL_TRIANGLES,0,6);
 
 
     SDL_GL_SwapWindow(window);
